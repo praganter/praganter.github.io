@@ -1,101 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  
-<script src="mailer.js" defer></script>
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Batuhan YETGİN's personel website">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Batuhan Yetgin | Backend &amp; Mobile Developer</title>
+  <meta name="description" content="Batuhan Yetgin builds backend systems and mobile apps that businesses run on.">
+  <link rel="icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script>
+    (function () {
+      var saved;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      var lang = saved || ((navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+      document.documentElement.dataset.lang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #f6f7f6; --surface: #ffffff; --surface-2: #eceeec; --fg: #151917; --muted: #5a625e; --line: #dde1de;
+      --accent: #0d7f58; --on-accent: #ffffff;
+      --radius: 16px; --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; }
+    }
+    html[data-lang="tr"] [lang="en"], html[data-lang="en"] [lang="tr"] { display: none !important; }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Batuhan YETGİN">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3 { margin: 0; letter-spacing: -.02em; line-height: 1.15; }
+    p { margin: 0; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    .h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; max-width: 20ch; margin-bottom: 40px; }
+    .muted { color: var(--muted); }
+    .mono { font-family: "Geist Mono", ui-monospace, monospace; }
 
-  <title>Batuhan YETGİN</title>
-  <link rel="manifest" href="manifest.json">
+    /* nav */
+    nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    nav .wrap { height: 64px; display: flex; align-items: center; gap: 32px; }
+    .brand { font-weight: 600; margin-right: auto; }
+    .navlinks { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
+    .navlinks a:hover { color: var(--fg); }
+    .lang { font: 500 .8rem "Geist Mono", monospace; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+    .lang:hover { border-color: var(--muted); }
+
+    /* buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 500; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); transition: transform .2s var(--ease), border-color .2s, background-color .2s; }
+    .btn:hover { border-color: var(--muted); }
+    .btn:active { transform: scale(.98); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    .btn.primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--fg)); }
+    .btn i { font-size: 1.15em; }
+
+    /* hero */
+    .hero { padding: 72px 0 80px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
+    .role { font: 500 .8rem "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.05; }
+    .hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin: 24px 0 36px; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .portrait { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-2); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 40%; }
+
+    /* stats */
+    .stats { padding: 0 0 24px; }
+    .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat { border-top: 1px solid var(--line); padding-top: 20px; }
+    .stat b { display: block; font: 500 clamp(1.6rem, 3vw, 2.2rem)/1.2 "Geist Mono", monospace; letter-spacing: -.03em; }
+    .stat > span { color: var(--muted); font-size: .95rem; }
+
+    /* projects bento */
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .tile { border-radius: var(--radius); padding: 36px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; transition: transform .35s var(--ease); }
+    .tile:hover { transform: translateY(-4px); }
+    .tile .logo { width: 64px; height: 64px; border-radius: 16px; }
+    .tile h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 600; max-width: 22ch; }
+    .tile .name { font: 500 .85rem "Geist Mono", monospace; opacity: .75; }
+    .tile p { opacity: .85; max-width: 52ch; }
+    .tile ul { list-style: none; padding: 0; margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tile li { font-size: .85rem; padding: 6px 12px; border-radius: 999px; background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .16); }
+    .kamci { grid-column: span 7; color: #f7f3ff; background: radial-gradient(120% 90% at 100% 0%, #8b5cf6 0%, transparent 60%), linear-gradient(160deg, #5b21b6, #3b1585); }
+    .b2 { grid-column: span 5; color: #f3e7c4; background: radial-gradient(90% 70% at 0% 0%, rgb(212 175 55 / .22), transparent 60%), linear-gradient(170deg, #12324a, #0a1d2c); }
+    .b2 li { background: rgb(212 175 55 / .12); border-color: rgb(212 175 55 / .28); }
+    .tir { grid-column: span 12; color: #f4efe4; background: radial-gradient(70% 120% at 100% 100%, rgb(255 179 0 / .18), transparent 60%), #121417; flex-direction: row; align-items: center; gap: 40px; }
+    .tir .logo { width: 168px; height: 168px; border-radius: 32px; flex-shrink: 0; }
+    .tir .body { display: flex; flex-direction: column; gap: 18px; }
+    .tir li { background: rgb(255 179 0 / .12); border-color: rgb(255 179 0 / .3); }
+
+    /* services */
+    .services .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+    .services .h2 { position: sticky; top: 112px; }
+    .svc { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--line); }
+    .svc:first-child { border-top: 0; padding-top: 0; }
+    .svc i { font-size: 28px; color: var(--accent); }
+    .svc h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
+    .svc p { color: var(--muted); }
+
+    /* experience */
+    .job { display: grid; grid-template-columns: 160px 1fr 1.3fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--line); }
+    .job .yr { font: .9rem "Geist Mono", monospace; color: var(--muted); padding-top: 3px; }
+    .job h3 { font-size: 1.1rem; font-weight: 600; }
+    .job .co { color: var(--muted); }
+    .job p { color: var(--muted); }
+    .edu { margin-top: 32px; color: var(--muted); }
+
+    /* contact */
+    .contact .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(40px, 7vw, 88px); text-align: center; }
+    .contact h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 600; max-width: 18ch; margin: 0 auto 16px; }
+    .contact .panel > p { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
+    .contact .ctas { justify-content: center; }
+    .social { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
+    .social a { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line); font-size: 20px; color: var(--muted); transition: color .2s, border-color .2s, transform .2s var(--ease); }
+    .social a:hover { color: var(--fg); border-color: var(--muted); transform: translateY(-2px); }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
+
+    /* reveal on scroll */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+      .js .reveal.in { opacity: 1; transform: none; }
+      .js .hero .reveal { transition-delay: calc(var(--i, 0) * 90ms); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .tile, .btn, .social a { transition: none; }
+    }
+
+    /* mobile */
+    @media (max-width: 860px) {
+      .navlinks { display: none; }
+      section { padding: 72px 0; }
+      .hero { padding: 40px 0 64px; }
+      .hero .wrap, .services .wrap { grid-template-columns: 1fr; gap: 40px; }
+      .portrait { max-width: 360px; aspect-ratio: 1; }
+      .stats .wrap { grid-template-columns: 1fr 1fr; }
+      .kamci, .b2, .tir { grid-column: span 12; }
+      .tile { padding: 28px; }
+      .tir { flex-direction: column; align-items: flex-start; }
+      .tir .logo { width: 64px; height: 64px; border-radius: 16px; }
+      .services .h2 { position: static; margin-bottom: 0; }
+      .job { grid-template-columns: 1fr; gap: 4px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      .ctas .btn { flex: 1 1 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    var serviceWorkerVersion = '3151263242';
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
-        return;
-      }
-      scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
-      scriptTag.type = 'application/javascript';
-      document.body.append(scriptTag);
-    }
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Batuhan Yetgin</a>
+    <div class="navlinks">
+      <a href="#work"><span lang="en">Work</span><span lang="tr">Projeler</span></a>
+      <a href="#services"><span lang="en">Services</span><span lang="tr">Neler yaparım</span></a>
+      <a href="#experience"><span lang="en">Experience</span><span lang="tr">Deneyim</span></a>
+      <a href="#contact"><span lang="en">Contact</span><span lang="tr">İletişim</span></a>
+    </div>
+    <button class="lang" id="lang-toggle" type="button">
+      <span lang="en" aria-label="Türkçe'ye geç">TR</span><span lang="tr" aria-label="Switch to English">EN</span>
+    </button>
+  </div>
+</nav>
 
-    if ('serviceWorker' in navigator) {
-      // Service workers are supported. Use them.
-      window.addEventListener('load', function () {
-        // Wait for registration to finish before dropping the <script> tag.
-        // Otherwise, the browser will load the script multiple times,
-        // potentially different versions.
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl)
-          .then((reg) => {
-            function waitForActivation(serviceWorker) {
-              serviceWorker.addEventListener('statechange', () => {
-                if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
-                  loadMainDartJs();
-                }
-              });
-            }
-            if (!reg.active && (reg.installing || reg.waiting)) {
-              // No active web worker and we have installed or are installing
-              // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing || reg.waiting);
-            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
-              // When the app updates the serviceWorkerVersion changes, so we
-              // need to ask the service worker to update.
-              console.log('New service worker available.');
-              reg.update();
-              waitForActivation(reg.installing);
-            } else {
-              // Existing service worker is still good.
-              console.log('Loading app from service worker.');
-              loadMainDartJs();
-            }
-          });
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <p class="role reveal" style="--i:0"><span lang="en">Backend &amp; Mobile Developer</span><span lang="tr">Backend &amp; Mobil Geliştirici</span></p>
+        <h1 class="reveal" style="--i:1">
+          <span lang="en">I build software that businesses run on.</span>
+          <span lang="tr">İşletmelerin üzerinde döndüğü yazılımları geliştiriyorum.</span>
+        </h1>
+        <p class="sub reveal" style="--i:2">
+          <span lang="en">7+ years of turning complex business problems into products that just keep working. From billing platforms to mobile apps.</span>
+          <span lang="tr">7 yılı aşkın süredir karmaşık iş problemlerini sorunsuz çalışan ürünlere dönüştürüyorum. Faturalama platformlarından mobil uygulamalara.</span>
+        </p>
+        <div class="ctas reveal" style="--i:3">
+          <a class="btn primary" href="#contact"><i class="ph ph-paper-plane-tilt"></i><span lang="en">Get in touch</span><span lang="tr">İletişime geç</span></a>
+          <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="ph ph-file-text"></i><span lang="en">View CV</span><span lang="tr">CV'yi gör</span></a>
+        </div>
+      </div>
+      <div class="portrait reveal" style="--i:2">
+        <img src="assets/profile.jpg" alt="Batuhan Yetgin" width="900" height="719" fetchpriority="high">
+      </div>
+    </div>
+  </header>
 
-        // If service worker doesn't succeed in a reasonable amount of time,
-        // fallback to plaint <script> tag.
-        setTimeout(() => {
-          if (!scriptLoaded) {
-            console.warn(
-              'Failed to load app from service worker. Falling back to plain <script> tag.',
-            );
-            loadMainDartJs();
-          }
-        }, 4000);
-      });
-    } else {
-      // Service workers not supported. Just drop the <script> tag.
-      loadMainDartJs();
-    }
-  </script>
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat reveal"><b>7+</b><span lang="en">years building software</span><span lang="tr">yıllık yazılım deneyimi</span></div>
+      <div class="stat reveal"><b>6d → 4h</b><span lang="en">invoice run, after my rebuild</span><span lang="tr">yeniden yazdığım fatura süreci</span></div>
+      <div class="stat reveal"><b>5+</b><span lang="en">enterprise apps shipped</span><span lang="tr">yayına alınmış kurumsal uygulama</span></div>
+      <div class="stat reveal"><b><span lang="en">98.2%</span><span lang="tr">%98,2</span></b><span lang="en">test pass rate as team lead</span><span lang="tr">takım lideriyken test başarısı</span></div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <h2 class="h2 reveal"><span lang="en">Products I designed and built myself.</span><span lang="tr">Baştan sona kendim tasarlayıp geliştirdiğim ürünler.</span></h2>
+      <div class="bento">
+        <article class="tile kamci reveal">
+          <img class="logo" src="assets/kamci.png" alt="Kamci" width="64" height="64">
+          <span class="name">Kamci</span>
+          <h3><span lang="en">Know who owes whom, without the awkward reminders.</span><span lang="tr">Kim kime ne borçlu, hatırlatma mahcubiyeti olmadan.</span></h3>
+          <p>
+            <span lang="en">A personal finance app for debts and shared expenses. Track what you lent and borrowed, split costs with friends and let the app do the reminding.</span>
+            <span lang="tr">Borçlar ve ortak harcamalar için kişisel finans uygulaması. Verdiğini ve aldığını takip et, masrafları arkadaşlarınla paylaş, hatırlatmayı uygulamaya bırak.</span>
+          </p>
+          <ul>
+            <li><span lang="en">Shared debts</span><span lang="tr">Ortak borçlar</span></li>
+            <li><span lang="en">Monthly charts</span><span lang="tr">Aylık grafikler</span></li>
+            <li><span lang="en">Smart reminders</span><span lang="tr">Akıllı hatırlatmalar</span></li>
+            <li>iOS &amp; Android</li>
+          </ul>
+        </article>
+        <article class="tile b2 reveal">
+          <img class="logo" src="assets/b2gold.png" alt="B² GOLD" width="64" height="64">
+          <span class="name">B² GOLD</span>
+          <h3><span lang="en">The jeweler's ledger, cash desk and daily close on one screen.</span><span lang="tr">Kuyumcunun defteri, kasası ve gün sonu tek ekranda.</span></h3>
+          <p>
+            <span lang="en">Every purchase and sale, the live gold and cash position, a clean end of day. Runs without internet, so the shop's data never leaves the shop.</span>
+            <span lang="tr">Her alış ve satış, anlık altın ve nakit durumu, sorunsuz gün sonu. İnternetsiz çalışır, dükkanın verisi dükkandan çıkmaz.</span>
+          </p>
+          <ul>
+            <li><span lang="en">Works offline</span><span lang="tr">İnternetsiz</span></li>
+            <li><span lang="en">Daily backups</span><span lang="tr">Günlük yedek</span></li>
+            <li><span lang="en">One-click install</span><span lang="tr">Tek tıkla kurulum</span></li>
+          </ul>
+        </article>
+        <article class="tile tir reveal">
+          <img class="logo" src="assets/tirtakip.png" alt="Tır Takip" width="168" height="168">
+          <div class="body">
+            <span class="name">Tır Takip</span>
+            <h3><span lang="en">Sleep in the border queue. Never lose your place.</span><span lang="tr">Sınır kuyruğunda uyu, sıranı kaçırma.</span></h3>
+            <p>
+              <span lang="en">Truck drivers wait hours, sometimes days, at border crossings. Mount the phone on the windshield and rest: when the truck ahead moves, an alarm wakes you up.</span>
+              <span lang="tr">Tır şoförleri sınır kapılarında saatlerce, bazen günlerce bekler. Telefonu ön cama tak ve dinlen: öndeki tır ilerlediğinde alarm seni uyandırır.</span>
+            </p>
+            <ul>
+              <li><span lang="en">Day and night</span><span lang="tr">Gece ve gündüz</span></li>
+              <li><span lang="en">Easy on battery</span><span lang="tr">Pili yormaz</span></li>
+              <li><span lang="en">Never fails silently</span><span lang="tr">Sessizce bozulmaz</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="wrap">
+      <h2 class="h2 reveal"><span lang="en">What I can do for you.</span><span lang="tr">Senin için neler yapabilirim.</span></h2>
+      <div>
+        <div class="svc reveal">
+          <i class="ph ph-stack"></i>
+          <div>
+            <h3><span lang="en">Backend systems that hold up</span><span lang="tr">Ayakta kalan backend sistemleri</span></h3>
+            <p><span lang="en">Services that carry real money and real traffic: billing, integrations, messaging. Built to be monitored, recovered and changed without fear.</span><span lang="tr">Gerçek parayı ve gerçek trafiği taşıyan servisler: faturalama, entegrasyonlar, mesajlaşma. İzlenebilir, toparlanabilir ve korkmadan değiştirilebilir.</span></p>
+          </div>
+        </div>
+        <div class="svc reveal">
+          <i class="ph ph-device-mobile"></i>
+          <div>
+            <h3><span lang="en">Mobile apps, all the way to the store</span><span lang="tr">Mağazaya kadar mobil uygulamalar</span></h3>
+            <p><span lang="en">iOS and Android apps for companies and everyday users, from the first screen to the App Store and Google Play release.</span><span lang="tr">Şirketler ve son kullanıcılar için iOS ve Android uygulamaları. İlk ekrandan App Store ve Google Play yayınına kadar.</span></p>
+          </div>
+        </div>
+        <div class="svc reveal">
+          <i class="ph ph-rocket-launch"></i>
+          <div>
+            <h3><span lang="en">From idea to product</span><span lang="tr">Fikirden ürüne</span></h3>
+            <p><span lang="en">Have an idea, or a process that still lives in spreadsheets? I design it, build it, ship it and keep it running.</span><span lang="tr">Bir fikrin ya da hâlâ Excel'de yürüyen bir işin mi var? Tasarlarım, geliştiririm, yayına alırım ve ayakta tutarım.</span></p>
+          </div>
+        </div>
+        <div class="svc reveal">
+          <i class="ph ph-users-three"></i>
+          <div>
+            <h3><span lang="en">A teammate who leads</span><span lang="tr">Liderlik edebilen bir takım arkadaşı</span></h3>
+            <p><span lang="en">I have led a seven-person team, mentored developers and set up code review and testing habits that stuck.</span><span lang="tr">Yedi kişilik bir ekibi yönettim, geliştiricilere mentorluk yaptım, kalıcı kod inceleme ve test alışkanlıkları kurdum.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="h2 reveal"><span lang="en">Where I have made a difference.</span><span lang="tr">Fark yarattığım yerler.</span></h2>
+      <div class="job reveal">
+        <span class="yr"><span lang="en">2024 - now</span><span lang="tr">2024 - bugün</span></span>
+        <div><h3><span lang="en">Software Developer</span><span lang="tr">Yazılım Geliştirici</span></h3><span class="co">Millenicom</span></div>
+        <p><span lang="en">I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</span><span lang="tr">Bir telekom faturalama platformunda fatura modülünden sorumluyum. Yeniden yazdığım süreç fatura üretimini 6 günden 4 saate indirdi.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2021 - 2024</span>
+        <div><h3>Full Stack Developer</h3><span class="co">Xinerji Software</span></div>
+        <p><span lang="en">Built the first mobile product line for some of Turkey's largest logistics companies.</span><span lang="tr">Türkiye'nin en büyük lojistik firmaları için ilk mobil ürün ailesini geliştirdim.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2020 - 2021</span>
+        <div><h3><span lang="en">Test Automation Team Lead</span><span lang="tr">Test Otomasyon Takım Lideri</span></h3><span class="co">Ronwell Digital</span></div>
+        <p><span lang="en">Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</span><span lang="tr">İki ayda takım liderliğine yükseldim. Günlük otomatik testleri sıfırdan %98,2 başarıya taşıdım.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2019 - 2020</span>
+        <div><h3>Full Stack Developer</h3><span class="co">Etom Cloud</span></div>
+        <p><span lang="en">Built CRM and hiring products at an early-stage startup.</span><span lang="tr">Erken aşama bir girişimde CRM ve işe alım ürünleri geliştirdim.</span></p>
+      </div>
+      <p class="edu reveal"><span lang="en">B.S. Computer Engineering, Trakya University</span><span lang="tr">Bilgisayar Mühendisliği, Trakya Üniversitesi</span></p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="panel reveal">
+        <h2><span lang="en">Have a project, or need someone on your team?</span><span lang="tr">Bir projen mi var, ekibine biri mi lazım?</span></h2>
+        <p><span lang="en">Write to me and let's talk.</span><span lang="tr">Yaz, konuşalım.</span></p>
+        <div class="ctas">
+          <a class="btn primary" href="mailto:byetgin@engineer.com"><i class="ph ph-envelope-simple"></i>byetgin@engineer.com</a>
+        </div>
+        <div class="social">
+          <a href="https://www.linkedin.com/in/batuhanyetgin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+          <a href="https://github.com/praganter" target="_blank" rel="noopener" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
+          <a href="https://apps.apple.com/tr/developer/batuhan-yetgin/id1626612979" target="_blank" rel="noopener" aria-label="App Store"><i class="ph ph-app-store-logo"></i></a>
+          <a href="https://twitter.com/praganter" target="_blank" rel="noopener" aria-label="Twitter"><i class="ph ph-x-logo"></i></a>
+          <a href="https://www.instagram.com/yetginn/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Batuhan Yetgin</div>
+</footer>
+
+<script>
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    var lang = document.documentElement.dataset.lang === 'tr' ? 'en' : 'tr';
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  });
+
+  var io = 'IntersectionObserver' in window && new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io ? io.observe(el) : el.classList.add('in'); });
+</script>
 </body>
 </html>
