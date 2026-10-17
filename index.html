@@ -63,17 +63,14 @@
 
     /* hero */
     .hero { padding: 72px 0 80px; }
-    .hero .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
     .role { font: 500 .8rem "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.05; }
+    .hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.05; }
     .hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin: 24px 0 36px; }
     .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-    .portrait { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-2); }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 40%; }
 
     /* stats */
     .stats { padding: 0 0 24px; }
-    .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .stat { border-top: 1px solid var(--line); padding-top: 20px; }
     .stat b { display: block; font: 500 clamp(1.6rem, 3vw, 2.2rem)/1.2 "Geist Mono", monospace; letter-spacing: -.03em; }
     .stat > span { color: var(--muted); font-size: .95rem; }
@@ -140,9 +137,7 @@
       .navlinks { display: none; }
       section { padding: 72px 0; }
       .hero { padding: 40px 0 64px; }
-      .hero .wrap, .services .wrap { grid-template-columns: 1fr; gap: 40px; }
-      .portrait { max-width: 360px; aspect-ratio: 1; }
-      .stats .wrap { grid-template-columns: 1fr 1fr; }
+      .services .wrap { grid-template-columns: 1fr; gap: 40px; }
       .kamci, .b2, .tir { grid-column: span 12; }
       .tile { padding: 28px; }
       .tir { flex-direction: column; align-items: flex-start; }
@@ -190,16 +185,12 @@
           <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="ph ph-file-text"></i><span lang="en">View CV</span><span lang="tr">CV'yi gör</span></a>
         </div>
       </div>
-      <div class="portrait reveal" style="--i:2">
-        <img src="assets/profile.jpg" alt="Batuhan Yetgin" width="900" height="719" fetchpriority="high">
-      </div>
     </div>
   </header>
 
   <div class="stats">
     <div class="wrap">
       <div class="stat reveal"><b>7+</b><span lang="en">years building software</span><span lang="tr">yıllık yazılım deneyimi</span></div>
-      <div class="stat reveal"><b>6d → 4h</b><span lang="en">invoice run, after my rebuild</span><span lang="tr">yeniden yazdığım fatura süreci</span></div>
       <div class="stat reveal"><b>5+</b><span lang="en">enterprise apps shipped</span><span lang="tr">yayına alınmış kurumsal uygulama</span></div>
       <div class="stat reveal"><b><span lang="en">98.2%</span><span lang="tr">%98,2</span></b><span lang="en">test pass rate as team lead</span><span lang="tr">takım lideriyken test başarısı</span></div>
     </div>
@@ -327,7 +318,7 @@
         <h2><span lang="en">Have a project, or need someone on your team?</span><span lang="tr">Bir projen mi var, ekibine biri mi lazım?</span></h2>
         <p><span lang="en">Write to me and let's talk.</span><span lang="tr">Yaz, konuşalım.</span></p>
         <div class="ctas">
-          <a class="btn primary" href="mailto:byetgin@engineer.com"><i class="ph ph-envelope-simple"></i>byetgin@engineer.com</a>
+          <a class="btn primary" href="mailto:info@batuhanyetgin.dev"><i class="ph ph-envelope-simple"></i>info@batuhanyetgin.dev</a>
         </div>
         <div class="social">
           <a href="https://www.linkedin.com/in/batuhanyetgin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
