@@ -1,332 +1,816 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Batuhan Yetgin | Software Developer</title>
-  <meta name="description" content="Batuhan Yetgin builds backend systems that businesses run on.">
-  <link rel="icon" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <script>
-    (function () {
-      document.documentElement.classList.add('js');
-      try { var theme = localStorage.getItem('theme'); if (theme) document.documentElement.dataset.theme = theme; } catch (e) {}
-    })();
-  </script>
-  <style>
-    :root {
-      --bg: #f6f7f6; --surface: #ffffff; --surface-2: #eceeec; --fg: #151917; --muted: #5a625e; --line: #dde1de;
-      --accent: #0d7f58; --on-accent: #ffffff;
-      --radius: 16px; --ease: cubic-bezier(.16, 1, .3, 1);
-      color-scheme: light;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
-    }
-    :root[data-theme="dark"] { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Batuhan Yetgin | Software Developer</title>
+    <meta
+      name="description"
+      content="Batuhan Yetgin builds backend systems that businesses run on."
+    />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme) document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      :root {
+        --bg: #f6f7f6;
+        --surface: #ffffff;
+        --surface-2: #eceeec;
+        --fg: #151917;
+        --muted: #5a625e;
+        --line: #dde1de;
+        --accent: #0d7f58;
+        --on-accent: #ffffff;
+        --radius: 16px;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0d0f0e;
+          --surface: #151817;
+          --surface-2: #1c201e;
+          --fg: #eef1ef;
+          --muted: #9aa49f;
+          --line: #262b28;
+          --accent: #3fcf97;
+          --on-accent: #08130e;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0d0f0e;
+        --surface: #151817;
+        --surface-2: #1c201e;
+        --fg: #eef1ef;
+        --muted: #9aa49f;
+        --line: #262b28;
+        --accent: #3fcf97;
+        --on-accent: #08130e;
+        color-scheme: dark;
+      }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    h1, h2, h3 { margin: 0; letter-spacing: -.02em; line-height: 1.15; }
-    p { margin: 0; }
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 96px 0; }
-    .h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; max-width: 20ch; margin-bottom: 40px; }
-    .muted { color: var(--muted); }
-    .mono { font-family: "Geist Mono", ui-monospace, monospace; }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          17px/1.6 "Geist",
+          system-ui,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      p {
+        margin: 0;
+      }
+      .wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      section {
+        padding: 96px 0;
+      }
+      .h2 {
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        font-weight: 600;
+        max-width: 20ch;
+        margin-bottom: 40px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .mono {
+        font-family: "Geist Mono", ui-monospace, monospace;
+      }
 
-    /* nav */
-    nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-    nav .wrap { height: 64px; display: flex; align-items: center; gap: 32px; }
-    .brand { font-weight: 600; margin-right: auto; }
-    .navlinks { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
-    .navlinks a:hover { color: var(--fg); }
-    .theme { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; font-size: 1rem; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; cursor: pointer; }
-    .theme:hover { border-color: var(--muted); }
+      /* nav */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav .wrap {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .brand {
+        font-weight: 600;
+        margin-right: auto;
+      }
+      .navlinks {
+        display: flex;
+        gap: 28px;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+      .navlinks a:hover {
+        color: var(--fg);
+      }
+      .theme {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        font-size: 1rem;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--fg);
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .theme:hover {
+        border-color: var(--muted);
+      }
 
-    /* buttons */
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 500; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); transition: transform .2s var(--ease), border-color .2s, background-color .2s; }
-    .btn:hover { border-color: var(--muted); }
-    .btn:active { transform: scale(.98); }
-    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-    .btn.primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--fg)); }
-    .btn i { font-size: 1.15em; }
+      /* buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 22px;
+        border-radius: 999px;
+        font-weight: 500;
+        white-space: nowrap;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        transition:
+          transform 0.2s var(--ease),
+          border-color 0.2s,
+          background-color 0.2s;
+      }
+      .btn:hover {
+        border-color: var(--muted);
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--on-accent);
+      }
+      .btn.primary:hover {
+        background: color-mix(in srgb, var(--accent) 88%, var(--fg));
+      }
+      .btn i {
+        font-size: 1.15em;
+      }
 
-    /* hero */
-    .hero { padding: 72px 0 80px; }
-    .role { font: 500 .8rem "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.05; }
-    .hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 64ch; margin: 24px 0 36px; }
-    .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+      /* hero */
+      .hero {
+        padding: 72px 0 80px;
+      }
+      .role {
+        font:
+          500 0.8rem "Geist Mono",
+          monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        max-width: 18ch;
+        font-size: clamp(2.4rem, 6vw, 4.6rem);
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.05;
+      }
+      .hero .sub {
+        font-size: 1.15rem;
+        color: var(--muted);
+        max-width: 64ch;
+        margin: 24px 0 36px;
+      }
+      .ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
 
-    /* stats */
-    .stats { padding: 0 0 24px; }
-    .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .stat { border-top: 1px solid var(--line); padding-top: 20px; }
-    .stat b { display: block; font: 500 clamp(1.6rem, 3vw, 2.2rem)/1.2 "Geist Mono", monospace; letter-spacing: -.03em; }
-    .stat > span { color: var(--muted); font-size: .95rem; }
+      /* stats */
+      .stats {
+        padding: 0 0 24px;
+      }
+      .stats .wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .stat {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+      }
+      .stat b {
+        display: block;
+        font:
+          500 clamp(1.6rem, 3vw, 2.2rem)/1.2 "Geist Mono",
+          monospace;
+        letter-spacing: -0.03em;
+      }
+      .stat > span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
 
-    /* projects bento */
-    .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
-    .tile { border-radius: var(--radius); padding: 36px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; transition: transform .35s var(--ease); }
-    .tile:hover { transform: translateY(-4px); }
-    .tile .logo { width: 64px; height: 64px; border-radius: 16px; }
-    .tile h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 600; max-width: 22ch; }
-    .tile .name { font: 500 .85rem "Geist Mono", monospace; opacity: .75; }
-    .tile p { opacity: .85; max-width: 52ch; }
-    .tile ul { list-style: none; padding: 0; margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-    .tile li { font-size: .85rem; padding: 6px 12px; border-radius: 999px; background: rgb(255 255 255 / .12); border: 1px solid rgb(255 255 255 / .16); }
-    .kamci { grid-column: span 7; color: #f7f3ff; background: radial-gradient(120% 90% at 100% 0%, #8b5cf6 0%, transparent 60%), linear-gradient(160deg, #5b21b6, #3b1585); }
-    .b2 { grid-column: span 5; color: #f3e7c4; background: radial-gradient(90% 70% at 0% 0%, rgb(212 175 55 / .22), transparent 60%), linear-gradient(170deg, #12324a, #0a1d2c); }
-    .b2 li { background: rgb(212 175 55 / .12); border-color: rgb(212 175 55 / .28); }
-    .tir { grid-column: span 12; color: #f4efe4; background: radial-gradient(70% 120% at 100% 100%, rgb(255 179 0 / .18), transparent 60%), #121417; flex-direction: row; align-items: center; gap: 40px; }
-    .tir .logo { width: 168px; height: 168px; border-radius: 32px; flex-shrink: 0; }
-    .tir .body { display: flex; flex-direction: column; gap: 18px; }
-    .tir li { background: rgb(255 179 0 / .12); border-color: rgb(255 179 0 / .3); }
+      /* projects bento */
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+      }
+      .tile {
+        border-radius: var(--radius);
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        overflow: hidden;
+        transition: transform 0.35s var(--ease);
+      }
+      .tile:hover {
+        transform: translateY(-4px);
+      }
+      .tile .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+      }
+      .tile h3 {
+        font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+        font-weight: 600;
+        max-width: 22ch;
+      }
+      .tile .name {
+        font:
+          500 0.85rem "Geist Mono",
+          monospace;
+        opacity: 0.75;
+      }
+      .tile p {
+        opacity: 0.85;
+        max-width: 52ch;
+      }
+      .tile ul {
+        list-style: none;
+        padding: 0;
+        margin: auto 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tile li {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgb(255 255 255 / 0.12);
+        border: 1px solid rgb(255 255 255 / 0.16);
+      }
+      .kamci {
+        grid-column: span 7;
+        color: #f7f3ff;
+        background:
+          radial-gradient(120% 90% at 100% 0%, #8b5cf6 0%, transparent 60%),
+          linear-gradient(160deg, #5b21b6, #3b1585);
+      }
+      .b2 {
+        grid-column: span 5;
+        color: #f3e7c4;
+        background:
+          radial-gradient(
+            90% 70% at 0% 0%,
+            rgb(212 175 55 / 0.22),
+            transparent 60%
+          ),
+          linear-gradient(170deg, #12324a, #0a1d2c);
+      }
+      .b2 li {
+        background: rgb(212 175 55 / 0.12);
+        border-color: rgb(212 175 55 / 0.28);
+      }
+      .tir {
+        grid-column: span 12;
+        color: #f4efe4;
+        background:
+          radial-gradient(
+            70% 120% at 100% 100%,
+            rgb(255 179 0 / 0.18),
+            transparent 60%
+          ),
+          #121417;
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+      }
+      .tir .logo {
+        width: 168px;
+        height: 168px;
+        border-radius: 32px;
+        flex-shrink: 0;
+      }
+      .tir .body {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .tir li {
+        background: rgb(255 179 0 / 0.12);
+        border-color: rgb(255 179 0 / 0.3);
+      }
 
-    /* services */
-    .services .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
-    .services .h2 { position: sticky; top: 112px; }
-    .svc { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--line); }
-    .svc:first-child { border-top: 0; padding-top: 0; }
-    .svc i { font-size: 28px; color: var(--accent); }
-    .svc h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
-    .svc p { color: var(--muted); }
+      /* services */
+      .services .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 64px;
+        align-items: start;
+      }
+      .services .h2 {
+        position: sticky;
+        top: 112px;
+      }
+      .svc {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 20px;
+        padding: 28px 0;
+        border-top: 1px solid var(--line);
+      }
+      .svc:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .svc i {
+        font-size: 28px;
+        color: var(--accent);
+      }
+      .svc h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .svc p {
+        color: var(--muted);
+      }
 
-    /* experience */
-    .job { display: grid; grid-template-columns: 160px 1fr 1.3fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--line); }
-    .job .yr { font: .9rem "Geist Mono", monospace; color: var(--muted); padding-top: 3px; }
-    .job h3 { font-size: 1.1rem; font-weight: 600; }
-    .job .co { color: var(--muted); }
-    .job p { color: var(--muted); }
-    .edu { margin-top: 32px; color: var(--muted); }
+      /* experience */
+      .job {
+        display: grid;
+        grid-template-columns: 160px 1fr 1.3fr;
+        gap: 24px;
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+      }
+      .job .yr {
+        font:
+          0.9rem "Geist Mono",
+          monospace;
+        color: var(--muted);
+        padding-top: 3px;
+      }
+      .job h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .job .co {
+        color: var(--muted);
+      }
+      .job p {
+        color: var(--muted);
+      }
+      .edu {
+        margin-top: 32px;
+        color: var(--muted);
+      }
 
-    /* contact */
-    .contact .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(40px, 7vw, 88px); text-align: center; }
-    .contact h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 600; max-width: 18ch; margin: 0 auto 16px; }
-    .contact .panel > p { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
-    .contact .ctas { justify-content: center; }
+      /* contact */
+      .contact .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: clamp(40px, 7vw, 88px);
+        text-align: center;
+      }
+      .contact h2 {
+        font-size: clamp(2rem, 4.6vw, 3.2rem);
+        font-weight: 600;
+        max-width: 18ch;
+        margin: 0 auto 16px;
+      }
+      .contact .panel > p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+      }
+      .contact .ctas {
+        justify-content: center;
+      }
 
-    footer { padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
+      footer {
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
 
-    /* reveal on scroll */
-    @media (prefers-reduced-motion: no-preference) {
-      .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-      .js .reveal.in { opacity: 1; transform: none; }
-      .js .hero .reveal { transition-delay: calc(var(--i, 0) * 90ms); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .tile, .btn { transition: none; }
-    }
+      /* reveal on scroll */
+      @media (prefers-reduced-motion: no-preference) {
+        .js .reveal {
+          opacity: 0;
+          transform: translateY(18px);
+          transition:
+            opacity 0.7s var(--ease),
+            transform 0.7s var(--ease);
+        }
+        .js .reveal.in {
+          opacity: 1;
+          transform: none;
+        }
+        .js .hero .reveal {
+          transition-delay: calc(var(--i, 0) * 90ms);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .tile,
+        .btn {
+          transition: none;
+        }
+      }
 
-    /* mobile */
-    @media (max-width: 860px) {
-      .navlinks { display: none; }
-      section { padding: 72px 0; }
-      .hero { padding: 40px 0 64px; }
-      .services .wrap { grid-template-columns: 1fr; gap: 40px; }
-      .kamci, .b2, .tir { grid-column: span 12; }
-      .tile { padding: 28px; }
-      .tir { flex-direction: column; align-items: flex-start; }
-      .tir .logo { width: 64px; height: 64px; border-radius: 16px; }
-      .services .h2 { position: static; margin-bottom: 0; }
-      .job { grid-template-columns: 1fr; gap: 4px; }
-    }
-    @media (max-width: 520px) {
-      .wrap { padding: 0 16px; }
-      .ctas .btn { flex: 1 1 100%; justify-content: center; }
-    }
-  </style>
-</head>
-<body>
-<nav>
-  <div class="wrap">
-    <a class="brand" href="#top">Batuhan Yetgin</a>
-    <div class="navlinks">
-      <a href="#experience">Experience</a>
-      <a href="#work">Projects</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme"><i class="ph ph-circle-half"></i></button>
-  </div>
-</nav>
-
-<main id="top">
-  <header class="hero">
-    <div class="wrap">
-      <div>
-        <p class="role reveal" style="--i:0">Software Developer</p>
-        <h1 class="reveal" style="--i:1">
-          I build software that businesses run on.
-        </h1>
-        <p class="sub reveal" style="--i:2">
-          Backend Developer with 7+ years of software engineering experience, including 5+ years building Java and Spring Boot backend services. Owner of the invoicing module on a telecom billing platform; rebuilt the invoice pipeline, cutting batch processing from 6 days to 4 hours. Experienced in migrating legacy systems to microservices, event-driven architecture with RabbitMQ, and leading and mentoring engineers.
-        </p>
-        <div class="ctas reveal" style="--i:3">
-          <a class="btn primary" href="#contact"><i class="ph ph-paper-plane-tilt"></i>Get in touch</a>
-          <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="ph ph-file-text"></i>View CV</a>
+      /* mobile */
+      @media (max-width: 860px) {
+        .navlinks {
+          display: none;
+        }
+        section {
+          padding: 72px 0;
+        }
+        .hero {
+          padding: 40px 0 64px;
+        }
+        .services .wrap {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .kamci,
+        .b2,
+        .tir {
+          grid-column: span 12;
+        }
+        .tile {
+          padding: 28px;
+        }
+        .tir {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .tir .logo {
+          width: 64px;
+          height: 64px;
+          border-radius: 16px;
+        }
+        .services .h2 {
+          position: static;
+          margin-bottom: 0;
+        }
+        .job {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+      }
+      @media (max-width: 520px) {
+        .wrap {
+          padding: 0 16px;
+        }
+        .ctas .btn {
+          flex: 1 1 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <a class="brand" href="#top">Batuhan Yetgin</a>
+        <div class="navlinks">
+          <a href="#experience">Experience</a>
+          <a href="#work">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
         </div>
+        <button
+          class="theme"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          <i class="ph ph-circle-half"></i>
+        </button>
       </div>
-    </div>
-  </header>
+    </nav>
 
-  <div class="stats">
-    <div class="wrap">
-      <div class="stat reveal"><b>7+</b><span>years building software</span></div>
-      <div class="stat reveal"><b>6 days → 4 h</b><span>invoice run after my rebuild</span></div>
-    </div>
-  </div>
-
-  <section id="experience">
-    <div class="wrap">
-      <h2 class="h2 reveal">Where I have made a difference.</h2>
-      <div class="job reveal">
-        <span class="yr">2024 - now</span>
-        <div><h3>Software Developer</h3><span class="co">Millenicom</span></div>
-        <p>I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2021 - 2024</span>
-        <div><h3>Full Stack Developer</h3><span class="co">Xinerji Software</span></div>
-        <p>Built the first mobile product line for some of Turkey's largest logistics companies.</p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2020 - 2021</span>
-        <div><h3>Test Automation Team Lead</h3><span class="co">Ronwell Digital</span></div>
-        <p>Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2019 - 2020</span>
-        <div><h3>Full Stack Developer</h3><span class="co">Etom Cloud</span></div>
-        <p>Built CRM and hiring products at an early-stage startup.</p>
-      </div>
-      <p class="edu reveal">B.S. Computer Engineering, Trakya University</p>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="wrap">
-      <h2 class="h2 reveal">Personal projects, designed and built end to end.</h2>
-      <div class="bento">
-        <article class="tile kamci reveal">
-          <img class="logo" src="assets/kamci.png" alt="Kamci" width="64" height="64">
-          <span class="name">Kamci</span>
-          <h3>Know who owes whom, without the awkward reminders.</h3>
-          <p>
-            A personal finance app for debts and shared expenses. Track what you lent and borrowed, split costs with friends and let the app do the reminding.
-          </p>
-          <ul>
-            <li>Shared debts</li>
-            <li>Monthly charts</li>
-            <li>Smart reminders</li>
-            <li>iOS &amp; Android</li>
-          </ul>
-        </article>
-        <article class="tile b2 reveal">
-          <img class="logo" src="assets/b2gold.png" alt="B² GOLD" width="64" height="64">
-          <span class="name">B² GOLD</span>
-          <h3>The jeweler's ledger, cash desk and daily close on one screen.</h3>
-          <p>
-            Every purchase and sale, the live gold and cash position, a clean end of day. Runs without internet, so the shop's data never leaves the shop.
-          </p>
-          <ul>
-            <li>Works offline</li>
-            <li>Daily backups</li>
-            <li>One-click install</li>
-          </ul>
-        </article>
-        <article class="tile tir reveal">
-          <img class="logo" src="assets/tirtakip.png" alt="Tır Takip" width="168" height="168">
-          <div class="body">
-            <span class="name">Tır Takip</span>
-            <h3>Sleep in the border queue. Never lose your place.</h3>
-            <p>
-              Truck drivers wait hours, sometimes days, at border crossings. Mount the phone on the windshield and rest: when the truck ahead moves, an alarm wakes you up.
+    <main id="top">
+      <header class="hero">
+        <div class="wrap">
+          <div>
+            <p class="role reveal" style="--i: 0">Software Developer</p>
+            <h1 class="reveal" style="--i: 1">
+              I build software that businesses run on.
+            </h1>
+            <p class="sub reveal" style="--i: 2">
+              Backend Developer with 7+ years of software engineering
+              experience, including 5+ years building Java and Spring Boot
+              backend services. Owner of the invoicing module on a telecom
+              billing platform; rebuilt the invoice pipeline, cutting batch
+              processing from 6 days to 4 hours. Experienced in migrating legacy
+              systems to microservices, event-driven architecture with RabbitMQ,
+              and leading and mentoring engineers.
             </p>
-            <ul>
-              <li>Day and night</li>
-              <li>Easy on battery</li>
-              <li>Never fails silently</li>
-            </ul>
+            <div class="ctas reveal" style="--i: 3">
+              <a class="btn primary" href="#contact"
+                ><i class="ph ph-paper-plane-tilt"></i>Get in touch</a
+              >
+              <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"
+                ><i class="ph ph-file-text"></i>View CV</a
+              >
+            </div>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
+        </div>
+      </header>
 
-  <section id="services" class="services">
-    <div class="wrap">
-      <h2 class="h2 reveal">What I can do for you.</h2>
-      <div>
-        <div class="svc reveal">
-          <i class="ph ph-stack"></i>
+      <section id="experience">
+        <div class="wrap">
+          <h2 class="h2 reveal">Where I have made a difference.</h2>
+          <div class="job reveal">
+            <span class="yr">2024 - now</span>
+            <div>
+              <h3>Software Developer</h3>
+              <span class="co">Millenicom</span>
+            </div>
+            <p>
+              I own invoicing on a telecom billing platform. My rebuild cut the
+              full invoice run from 6 days to 4 hours.
+            </p>
+          </div>
+          <div class="job reveal">
+            <span class="yr">2021 - 2024</span>
+            <div>
+              <h3>Full Stack Developer</h3>
+              <span class="co">Xinerji Software</span>
+            </div>
+            <p>
+              Built the first mobile product line for some of Turkey's largest
+              logistics companies.
+            </p>
+          </div>
+          <div class="job reveal">
+            <span class="yr">2020 - 2021</span>
+            <div>
+              <h3>Test Automation Team Lead</h3>
+              <span class="co">Ronwell Digital</span>
+            </div>
+            <p>
+              Promoted to lead in two months. Took daily automated testing from
+              zero to a 98.2% pass rate.
+            </p>
+          </div>
+          <div class="job reveal">
+            <span class="yr">2019 - 2020</span>
+            <div>
+              <h3>Full Stack Developer</h3>
+              <span class="co">Etom Cloud</span>
+            </div>
+            <p>Built CRM and hiring products at an early-stage startup.</p>
+          </div>
+          <p class="edu reveal">B.S. Computer Engineering, Trakya University</p>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="wrap">
+          <h2 class="h2 reveal">
+            Personal projects, designed and built end to end.
+          </h2>
+          <div class="bento">
+            <article class="tile kamci reveal">
+              <img
+                class="logo"
+                src="assets/kamci.png"
+                alt="Kamci"
+                width="64"
+                height="64"
+              />
+              <span class="name">Kamci</span>
+              <h3>Know who owes whom, without the awkward reminders.</h3>
+              <p>
+                A personal finance app for debts and shared expenses. Track what
+                you lent and borrowed, split costs with friends and let the app
+                do the reminding.
+              </p>
+              <ul>
+                <li>Shared debts</li>
+                <li>Monthly charts</li>
+                <li>Smart reminders</li>
+                <li>iOS &amp; Android</li>
+              </ul>
+            </article>
+            <article class="tile b2 reveal">
+              <img
+                class="logo"
+                src="assets/b2gold.png"
+                alt="B² GOLD"
+                width="64"
+                height="64"
+              />
+              <span class="name">B² GOLD</span>
+              <h3>
+                The jeweler's ledger, cash desk and daily close on one screen.
+              </h3>
+              <p>
+                Every purchase and sale, the live gold and cash position, a
+                clean end of day. Runs without internet, so the shop's data
+                never leaves the shop.
+              </p>
+              <ul>
+                <li>Works offline</li>
+                <li>Daily backups</li>
+                <li>One-click install</li>
+              </ul>
+            </article>
+            <article class="tile tir reveal">
+              <img
+                class="logo"
+                src="assets/tirtakip.png"
+                alt="Tır Takip"
+                width="168"
+                height="168"
+              />
+              <div class="body">
+                <span class="name">Tır Takip</span>
+                <h3>Sleep in the border queue. Never lose your place.</h3>
+                <p>
+                  Truck drivers wait hours, sometimes days, at border crossings.
+                  Mount the phone on the windshield and rest: when the truck
+                  ahead moves, an alarm wakes you up.
+                </p>
+                <ul>
+                  <li>Day and night</li>
+                  <li>Easy on battery</li>
+                  <li>Never fails silently</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <div class="wrap">
+          <h2 class="h2 reveal">What I can do for you.</h2>
           <div>
-            <h3>Backend systems that hold up</h3>
-            <p>Services that carry real money and real traffic: billing, integrations, messaging. Built to be monitored, recovered and changed without fear.</p>
+            <div class="svc reveal">
+              <i class="ph ph-stack"></i>
+              <div>
+                <h3>Backend systems that hold up</h3>
+                <p>
+                  Services that carry real money and real traffic: billing,
+                  integrations, messaging. Built to be monitored, recovered and
+                  changed without fear.
+                </p>
+              </div>
+            </div>
+            <div class="svc reveal">
+              <i class="ph ph-device-mobile"></i>
+              <div>
+                <h3>Mobile apps, all the way to the store</h3>
+                <p>
+                  iOS and Android apps for companies and everyday users, from
+                  the first screen to the App Store and Google Play release.
+                </p>
+              </div>
+            </div>
+            <div class="svc reveal">
+              <i class="ph ph-rocket-launch"></i>
+              <div>
+                <h3>From idea to product</h3>
+                <p>
+                  Have an idea, or a process that still lives in spreadsheets? I
+                  design it, build it, ship it and keep it running.
+                </p>
+              </div>
+            </div>
+            <div class="svc reveal">
+              <i class="ph ph-users-three"></i>
+              <div>
+                <h3>A teammate who leads</h3>
+                <p>
+                  I have led a seven-person team, mentored developers and set up
+                  code review and testing habits that stuck.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="svc reveal">
-          <i class="ph ph-device-mobile"></i>
-          <div>
-            <h3>Mobile apps, all the way to the store</h3>
-            <p>iOS and Android apps for companies and everyday users, from the first screen to the App Store and Google Play release.</p>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="wrap">
+          <div class="panel reveal">
+            <h2>Have a project, or need someone on your team?</h2>
+            <p>Write to me and let's talk.</p>
+            <div class="ctas">
+              <a class="btn primary" href="mailto:info@batuhanyetgin.dev"
+                ><i class="ph ph-envelope-simple"></i>info@batuhanyetgin.dev</a
+              >
+            </div>
           </div>
         </div>
-        <div class="svc reveal">
-          <i class="ph ph-rocket-launch"></i>
-          <div>
-            <h3>From idea to product</h3>
-            <p>Have an idea, or a process that still lives in spreadsheets? I design it, build it, ship it and keep it running.</p>
-          </div>
-        </div>
-        <div class="svc reveal">
-          <i class="ph ph-users-three"></i>
-          <div>
-            <h3>A teammate who leads</h3>
-            <p>I have led a seven-person team, mentored developers and set up code review and testing habits that stuck.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </main>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <div class="panel reveal">
-        <h2>Have a project, or need someone on your team?</h2>
-        <p>Write to me and let's talk.</p>
-        <div class="ctas">
-          <a class="btn primary" href="mailto:info@batuhanyetgin.dev"><i class="ph ph-envelope-simple"></i>info@batuhanyetgin.dev</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+    <footer>
+      <div class="wrap">© 2026 Batuhan Yetgin</div>
+    </footer>
 
-<footer>
-  <div class="wrap">© 2026 Batuhan Yetgin</div>
-</footer>
+    <script>
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", function () {
+          var root = document.documentElement;
+          var dark = root.dataset.theme
+            ? root.dataset.theme === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          root.dataset.theme = dark ? "light" : "dark";
+          try {
+            localStorage.setItem("theme", root.dataset.theme);
+          } catch (e) {}
+        });
 
-<script>
-  document.getElementById('theme-toggle').addEventListener('click', function () {
-    var root = document.documentElement;
-    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-  });
-
-  var io = 'IntersectionObserver' in window && new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { io ? io.observe(el) : el.classList.add('in'); });
-</script>
-</body>
+      var io =
+        "IntersectionObserver" in window &&
+        new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px" },
+        );
+      document.querySelectorAll(".reveal").forEach(function (el) {
+        io ? io.observe(el) : el.classList.add("in");
+      });
+    </script>
+  </body>
 </html>
