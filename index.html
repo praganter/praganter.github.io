@@ -115,9 +115,6 @@
     .contact h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 600; max-width: 18ch; margin: 0 auto 16px; }
     .contact .panel > p { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
     .contact .ctas { justify-content: center; }
-    .social { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
-    .social a { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line); font-size: 20px; color: var(--muted); transition: color .2s, border-color .2s, transform .2s var(--ease); }
-    .social a:hover { color: var(--fg); border-color: var(--muted); transform: translateY(-2px); }
 
     footer { padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
 
@@ -129,7 +126,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .tile, .btn, .social a { transition: none; }
+      .tile, .btn { transition: none; }
     }
 
     /* mobile */
@@ -319,13 +316,6 @@
         <p><span lang="en">Write to me and let's talk.</span><span lang="tr">Yaz, konuşalım.</span></p>
         <div class="ctas">
           <a class="btn primary" href="mailto:info@batuhanyetgin.dev"><i class="ph ph-envelope-simple"></i>info@batuhanyetgin.dev</a>
-        </div>
-        <div class="social">
-          <a href="https://www.linkedin.com/in/batuhanyetgin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-          <a href="https://github.com/praganter" target="_blank" rel="noopener" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
-          <a href="https://apps.apple.com/tr/developer/batuhan-yetgin/id1626612979" target="_blank" rel="noopener" aria-label="App Store"><i class="ph ph-app-store-logo"></i></a>
-          <a href="https://twitter.com/praganter" target="_blank" rel="noopener" aria-label="Twitter"><i class="ph ph-x-logo"></i></a>
-          <a href="https://www.instagram.com/yetginn/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
         </div>
       </div>
     </div>
