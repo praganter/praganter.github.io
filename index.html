@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +12,6 @@
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <script>
     (function () {
-      var saved;
-      try { saved = localStorage.getItem('lang'); } catch (e) {}
-      var lang = saved || ((navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
-      document.documentElement.dataset.lang = lang;
-      document.documentElement.lang = lang;
       document.documentElement.classList.add('js');
       try { var theme = localStorage.getItem('theme'); if (theme) document.documentElement.dataset.theme = theme; } catch (e) {}
     })();
@@ -32,7 +27,6 @@
       :root:not([data-theme="light"]) { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
     }
     :root[data-theme="dark"] { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
-    html[data-lang="tr"] [lang="en"], html[data-lang="en"] [lang="tr"] { display: none !important; }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -53,10 +47,8 @@
     .brand { font-weight: 600; margin-right: auto; }
     .navlinks { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
     .navlinks a:hover { color: var(--fg); }
-    .toggles { display: flex; gap: 8px; }
-    .lang, .theme { height: 32px; font: 500 .8rem "Geist Mono", monospace; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 0 12px; cursor: pointer; }
-    .lang:hover, .theme:hover { border-color: var(--muted); }
-    .theme { display: grid; place-items: center; width: 32px; padding: 0; font-size: 1rem; }
+    .theme { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; font-size: 1rem; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; cursor: pointer; }
+    .theme:hover { border-color: var(--muted); }
 
     /* buttons */
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 500; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); transition: transform .2s var(--ease), border-color .2s, background-color .2s; }
@@ -70,7 +62,7 @@
     .hero { padding: 72px 0 80px; }
     .role { font: 500 .8rem "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
     .hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.05; }
-    .hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin: 24px 0 36px; }
+    .hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 64ch; margin: 24px 0 36px; }
     .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
     /* stats */
@@ -158,17 +150,12 @@
   <div class="wrap">
     <a class="brand" href="#top">Batuhan Yetgin</a>
     <div class="navlinks">
-      <a href="#experience"><span lang="en">Experience</span><span lang="tr">Deneyim</span></a>
-      <a href="#work"><span lang="en">Projects</span><span lang="tr">Projeler</span></a>
-      <a href="#services"><span lang="en">Services</span><span lang="tr">Neler yaparım</span></a>
-      <a href="#contact"><span lang="en">Contact</span><span lang="tr">İletişim</span></a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="toggles">
-      <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme"><i class="ph ph-circle-half"></i></button>
-      <button class="lang" id="lang-toggle" type="button">
-        <span lang="en" aria-label="Türkçe'ye geç">TR</span><span lang="tr" aria-label="Switch to English">EN</span>
-      </button>
-    </div>
+    <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme"><i class="ph ph-circle-half"></i></button>
   </div>
 </nav>
 
@@ -178,16 +165,14 @@
       <div>
         <p class="role reveal" style="--i:0">Software Developer</p>
         <h1 class="reveal" style="--i:1">
-          <span lang="en">I build software that businesses run on.</span>
-          <span lang="tr">İşletmelerin üzerinde döndüğü yazılımları geliştiriyorum.</span>
+          I build software that businesses run on.
         </h1>
         <p class="sub reveal" style="--i:2">
-          <span lang="en">7+ years building backend systems that carry real money and real traffic: billing, integrations, messaging.</span>
-          <span lang="tr">7 yılı aşkın süredir gerçek parayı ve gerçek trafiği taşıyan backend sistemleri geliştiriyorum: faturalama, entegrasyonlar, mesajlaşma.</span>
+          Backend Developer with 7+ years of software engineering experience, including 5+ years building Java and Spring Boot backend services. Owner of the invoicing module on a telecom billing platform; rebuilt the invoice pipeline, cutting batch processing from 6 days to 4 hours. Experienced in migrating legacy systems to microservices, event-driven architecture with RabbitMQ, and leading and mentoring engineers.
         </p>
         <div class="ctas reveal" style="--i:3">
-          <a class="btn primary" href="#contact"><i class="ph ph-paper-plane-tilt"></i><span lang="en">Get in touch</span><span lang="tr">İletişime geç</span></a>
-          <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="ph ph-file-text"></i><span lang="en">View CV</span><span lang="tr">CV'yi gör</span></a>
+          <a class="btn primary" href="#contact"><i class="ph ph-paper-plane-tilt"></i>Get in touch</a>
+          <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="ph ph-file-text"></i>View CV</a>
         </div>
       </div>
     </div>
@@ -195,84 +180,81 @@
 
   <div class="stats">
     <div class="wrap">
-      <div class="stat reveal"><b>7+</b><span lang="en">years building software</span><span lang="tr">yıllık yazılım deneyimi</span></div>
-      <div class="stat reveal"><b><span lang="en">6 days → 4 h</span><span lang="tr">6 gün → 4 saat</span></b><span lang="en">invoice run after my rebuild</span><span lang="tr">yeniden yazdığım fatura üretimi</span></div>
+      <div class="stat reveal"><b>7+</b><span>years building software</span></div>
+      <div class="stat reveal"><b>6 days → 4 h</b><span>invoice run after my rebuild</span></div>
     </div>
   </div>
 
   <section id="experience">
     <div class="wrap">
-      <h2 class="h2 reveal"><span lang="en">Where I have made a difference.</span><span lang="tr">Fark yarattığım yerler.</span></h2>
+      <h2 class="h2 reveal">Where I have made a difference.</h2>
       <div class="job reveal">
-        <span class="yr"><span lang="en">2024 - now</span><span lang="tr">2024 - bugün</span></span>
+        <span class="yr">2024 - now</span>
         <div><h3>Software Developer</h3><span class="co">Millenicom</span></div>
-        <p><span lang="en">I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</span><span lang="tr">Bir telekom faturalama platformunda fatura modülünden sorumluyum. Yeniden yazdığım süreç fatura üretimini 6 günden 4 saate indirdi.</span></p>
+        <p>I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</p>
       </div>
       <div class="job reveal">
         <span class="yr">2021 - 2024</span>
         <div><h3>Full Stack Developer</h3><span class="co">Xinerji Software</span></div>
-        <p><span lang="en">Built the first mobile product line for some of Turkey's largest logistics companies.</span><span lang="tr">Türkiye'nin en büyük lojistik firmaları için ilk mobil ürün ailesini geliştirdim.</span></p>
+        <p>Built the first mobile product line for some of Turkey's largest logistics companies.</p>
       </div>
       <div class="job reveal">
         <span class="yr">2020 - 2021</span>
-        <div><h3><span lang="en">Test Automation Team Lead</span><span lang="tr">Test Otomasyon Takım Lideri</span></h3><span class="co">Ronwell Digital</span></div>
-        <p><span lang="en">Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</span><span lang="tr">İki ayda takım liderliğine yükseldim. Günlük otomatik testleri sıfırdan %98,2 başarıya taşıdım.</span></p>
+        <div><h3>Test Automation Team Lead</h3><span class="co">Ronwell Digital</span></div>
+        <p>Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</p>
       </div>
       <div class="job reveal">
         <span class="yr">2019 - 2020</span>
         <div><h3>Full Stack Developer</h3><span class="co">Etom Cloud</span></div>
-        <p><span lang="en">Built CRM and hiring products at an early-stage startup.</span><span lang="tr">Erken aşama bir girişimde CRM ve işe alım ürünleri geliştirdim.</span></p>
+        <p>Built CRM and hiring products at an early-stage startup.</p>
       </div>
-      <p class="edu reveal"><span lang="en">B.S. Computer Engineering, Trakya University</span><span lang="tr">Bilgisayar Mühendisliği, Trakya Üniversitesi</span></p>
+      <p class="edu reveal">B.S. Computer Engineering, Trakya University</p>
     </div>
   </section>
 
   <section id="work">
     <div class="wrap">
-      <h2 class="h2 reveal"><span lang="en">Personal projects, designed and built end to end.</span><span lang="tr">Baştan sona kendim geliştirdiğim kişisel projeler.</span></h2>
+      <h2 class="h2 reveal">Personal projects, designed and built end to end.</h2>
       <div class="bento">
         <article class="tile kamci reveal">
           <img class="logo" src="assets/kamci.png" alt="Kamci" width="64" height="64">
           <span class="name">Kamci</span>
-          <h3><span lang="en">Know who owes whom, without the awkward reminders.</span><span lang="tr">Kim kime ne borçlu, hatırlatma mahcubiyeti olmadan.</span></h3>
+          <h3>Know who owes whom, without the awkward reminders.</h3>
           <p>
-            <span lang="en">A personal finance app for debts and shared expenses. Track what you lent and borrowed, split costs with friends and let the app do the reminding.</span>
-            <span lang="tr">Borçlar ve ortak harcamalar için kişisel finans uygulaması. Verdiğini ve aldığını takip et, masrafları arkadaşlarınla paylaş, hatırlatmayı uygulamaya bırak.</span>
+            A personal finance app for debts and shared expenses. Track what you lent and borrowed, split costs with friends and let the app do the reminding.
           </p>
           <ul>
-            <li><span lang="en">Shared debts</span><span lang="tr">Ortak borçlar</span></li>
-            <li><span lang="en">Monthly charts</span><span lang="tr">Aylık grafikler</span></li>
-            <li><span lang="en">Smart reminders</span><span lang="tr">Akıllı hatırlatmalar</span></li>
+            <li>Shared debts</li>
+            <li>Monthly charts</li>
+            <li>Smart reminders</li>
             <li>iOS &amp; Android</li>
           </ul>
         </article>
         <article class="tile b2 reveal">
           <img class="logo" src="assets/b2gold.png" alt="B² GOLD" width="64" height="64">
           <span class="name">B² GOLD</span>
-          <h3><span lang="en">The jeweler's ledger, cash desk and daily close on one screen.</span><span lang="tr">Kuyumcunun defteri, kasası ve gün sonu tek ekranda.</span></h3>
+          <h3>The jeweler's ledger, cash desk and daily close on one screen.</h3>
           <p>
-            <span lang="en">Every purchase and sale, the live gold and cash position, a clean end of day. Runs without internet, so the shop's data never leaves the shop.</span>
-            <span lang="tr">Her alış ve satış, anlık altın ve nakit durumu, sorunsuz gün sonu. İnternetsiz çalışır, dükkanın verisi dükkandan çıkmaz.</span>
+            Every purchase and sale, the live gold and cash position, a clean end of day. Runs without internet, so the shop's data never leaves the shop.
           </p>
           <ul>
-            <li><span lang="en">Works offline</span><span lang="tr">İnternetsiz</span></li>
-            <li><span lang="en">Daily backups</span><span lang="tr">Günlük yedek</span></li>
-            <li><span lang="en">One-click install</span><span lang="tr">Tek tıkla kurulum</span></li>
+            <li>Works offline</li>
+            <li>Daily backups</li>
+            <li>One-click install</li>
           </ul>
         </article>
         <article class="tile tir reveal">
           <img class="logo" src="assets/tirtakip.png" alt="Tır Takip" width="168" height="168">
           <div class="body">
             <span class="name">Tır Takip</span>
-            <h3><span lang="en">Sleep in the border queue. Never lose your place.</span><span lang="tr">Sınır kuyruğunda uyu, sıranı kaçırma.</span></h3>
+            <h3>Sleep in the border queue. Never lose your place.</h3>
             <p>
-              <span lang="en">Truck drivers wait hours, sometimes days, at border crossings. Mount the phone on the windshield and rest: when the truck ahead moves, an alarm wakes you up.</span>
-              <span lang="tr">Tır şoförleri sınır kapılarında saatlerce, bazen günlerce bekler. Telefonu ön cama tak ve dinlen: öndeki tır ilerlediğinde alarm seni uyandırır.</span>
+              Truck drivers wait hours, sometimes days, at border crossings. Mount the phone on the windshield and rest: when the truck ahead moves, an alarm wakes you up.
             </p>
             <ul>
-              <li><span lang="en">Day and night</span><span lang="tr">Gece ve gündüz</span></li>
-              <li><span lang="en">Easy on battery</span><span lang="tr">Pili yormaz</span></li>
-              <li><span lang="en">Never fails silently</span><span lang="tr">Sessizce bozulmaz</span></li>
+              <li>Day and night</li>
+              <li>Easy on battery</li>
+              <li>Never fails silently</li>
             </ul>
           </div>
         </article>
@@ -282,34 +264,34 @@
 
   <section id="services" class="services">
     <div class="wrap">
-      <h2 class="h2 reveal"><span lang="en">What I can do for you.</span><span lang="tr">Senin için neler yapabilirim.</span></h2>
+      <h2 class="h2 reveal">What I can do for you.</h2>
       <div>
         <div class="svc reveal">
           <i class="ph ph-stack"></i>
           <div>
-            <h3><span lang="en">Backend systems that hold up</span><span lang="tr">Ayakta kalan backend sistemleri</span></h3>
-            <p><span lang="en">Services that carry real money and real traffic: billing, integrations, messaging. Built to be monitored, recovered and changed without fear.</span><span lang="tr">Gerçek parayı ve gerçek trafiği taşıyan servisler: faturalama, entegrasyonlar, mesajlaşma. İzlenebilir, toparlanabilir ve korkmadan değiştirilebilir.</span></p>
+            <h3>Backend systems that hold up</h3>
+            <p>Services that carry real money and real traffic: billing, integrations, messaging. Built to be monitored, recovered and changed without fear.</p>
           </div>
         </div>
         <div class="svc reveal">
           <i class="ph ph-device-mobile"></i>
           <div>
-            <h3><span lang="en">Mobile apps, all the way to the store</span><span lang="tr">Mağazaya kadar mobil uygulamalar</span></h3>
-            <p><span lang="en">iOS and Android apps for companies and everyday users, from the first screen to the App Store and Google Play release.</span><span lang="tr">Şirketler ve son kullanıcılar için iOS ve Android uygulamaları. İlk ekrandan App Store ve Google Play yayınına kadar.</span></p>
+            <h3>Mobile apps, all the way to the store</h3>
+            <p>iOS and Android apps for companies and everyday users, from the first screen to the App Store and Google Play release.</p>
           </div>
         </div>
         <div class="svc reveal">
           <i class="ph ph-rocket-launch"></i>
           <div>
-            <h3><span lang="en">From idea to product</span><span lang="tr">Fikirden ürüne</span></h3>
-            <p><span lang="en">Have an idea, or a process that still lives in spreadsheets? I design it, build it, ship it and keep it running.</span><span lang="tr">Bir fikrin ya da hâlâ Excel'de yürüyen bir işin mi var? Tasarlarım, geliştiririm, yayına alırım ve ayakta tutarım.</span></p>
+            <h3>From idea to product</h3>
+            <p>Have an idea, or a process that still lives in spreadsheets? I design it, build it, ship it and keep it running.</p>
           </div>
         </div>
         <div class="svc reveal">
           <i class="ph ph-users-three"></i>
           <div>
-            <h3><span lang="en">A teammate who leads</span><span lang="tr">Liderlik edebilen bir takım arkadaşı</span></h3>
-            <p><span lang="en">I have led a seven-person team, mentored developers and set up code review and testing habits that stuck.</span><span lang="tr">Yedi kişilik bir ekibi yönettim, geliştiricilere mentorluk yaptım, kalıcı kod inceleme ve test alışkanlıkları kurdum.</span></p>
+            <h3>A teammate who leads</h3>
+            <p>I have led a seven-person team, mentored developers and set up code review and testing habits that stuck.</p>
           </div>
         </div>
       </div>
@@ -319,8 +301,8 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="panel reveal">
-        <h2><span lang="en">Have a project, or need someone on your team?</span><span lang="tr">Bir projen mi var, ekibine biri mi lazım?</span></h2>
-        <p><span lang="en">Write to me and let's talk.</span><span lang="tr">Yaz, konuşalım.</span></p>
+        <h2>Have a project, or need someone on your team?</h2>
+        <p>Write to me and let's talk.</p>
         <div class="ctas">
           <a class="btn primary" href="mailto:info@batuhanyetgin.dev"><i class="ph ph-envelope-simple"></i>info@batuhanyetgin.dev</a>
         </div>
@@ -334,13 +316,6 @@
 </footer>
 
 <script>
-  document.getElementById('lang-toggle').addEventListener('click', function () {
-    var lang = document.documentElement.dataset.lang === 'tr' ? 'en' : 'tr';
-    document.documentElement.dataset.lang = lang;
-    document.documentElement.lang = lang;
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-  });
-
   document.getElementById('theme-toggle').addEventListener('click', function () {
     var root = document.documentElement;
     var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
