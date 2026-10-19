@@ -167,6 +167,23 @@
       .theme:hover {
         border-color: var(--muted);
       }
+      .theme .ph-sun {
+        display: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .theme .ph-sun {
+          display: block;
+        }
+        :root:not([data-theme="light"]) .theme .ph-moon {
+          display: none;
+        }
+      }
+      :root[data-theme="dark"] .theme .ph-sun {
+        display: block;
+      }
+      :root[data-theme="dark"] .theme .ph-moon {
+        display: none;
+      }
 
       /* buttons */
       .btn {
@@ -553,7 +570,8 @@
           type="button"
           aria-label="Toggle theme"
         >
-          <i class="ph ph-circle-half"></i>
+          <i class="ph ph-moon"></i>
+          <i class="ph ph-sun"></i>
         </button>
       </div>
     </nav>
