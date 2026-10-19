@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Batuhan Yetgin | Software Developer</title>
-  <meta name="description" content="Batuhan Yetgin builds backend systems and mobile apps that businesses run on.">
+  <meta name="description" content="Batuhan Yetgin builds backend systems that businesses run on.">
   <link rel="icon" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,7 @@
       document.documentElement.dataset.lang = lang;
       document.documentElement.lang = lang;
       document.documentElement.classList.add('js');
+      try { var theme = localStorage.getItem('theme'); if (theme) document.documentElement.dataset.theme = theme; } catch (e) {}
     })();
   </script>
   <style>
@@ -25,10 +26,12 @@
       --bg: #f6f7f6; --surface: #ffffff; --surface-2: #eceeec; --fg: #151917; --muted: #5a625e; --line: #dde1de;
       --accent: #0d7f58; --on-accent: #ffffff;
       --radius: 16px; --ease: cubic-bezier(.16, 1, .3, 1);
+      color-scheme: light;
     }
     @media (prefers-color-scheme: dark) {
-      :root { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; }
+      :root:not([data-theme="light"]) { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
     }
+    :root[data-theme="dark"] { --bg: #0d0f0e; --surface: #151817; --surface-2: #1c201e; --fg: #eef1ef; --muted: #9aa49f; --line: #262b28; --accent: #3fcf97; --on-accent: #08130e; color-scheme: dark; }
     html[data-lang="tr"] [lang="en"], html[data-lang="en"] [lang="tr"] { display: none !important; }
 
     * { box-sizing: border-box; }
@@ -50,8 +53,10 @@
     .brand { font-weight: 600; margin-right: auto; }
     .navlinks { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
     .navlinks a:hover { color: var(--fg); }
-    .lang { font: 500 .8rem "Geist Mono", monospace; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
-    .lang:hover { border-color: var(--muted); }
+    .toggles { display: flex; gap: 8px; }
+    .lang, .theme { height: 32px; font: 500 .8rem "Geist Mono", monospace; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 0 12px; cursor: pointer; }
+    .lang:hover, .theme:hover { border-color: var(--muted); }
+    .theme { display: grid; place-items: center; width: 32px; padding: 0; font-size: 1rem; }
 
     /* buttons */
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 500; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); transition: transform .2s var(--ease), border-color .2s, background-color .2s; }
@@ -153,14 +158,17 @@
   <div class="wrap">
     <a class="brand" href="#top">Batuhan Yetgin</a>
     <div class="navlinks">
-      <a href="#work"><span lang="en">Work</span><span lang="tr">Projeler</span></a>
-      <a href="#services"><span lang="en">Services</span><span lang="tr">Neler yaparım</span></a>
       <a href="#experience"><span lang="en">Experience</span><span lang="tr">Deneyim</span></a>
+      <a href="#work"><span lang="en">Projects</span><span lang="tr">Projeler</span></a>
+      <a href="#services"><span lang="en">Services</span><span lang="tr">Neler yaparım</span></a>
       <a href="#contact"><span lang="en">Contact</span><span lang="tr">İletişim</span></a>
     </div>
-    <button class="lang" id="lang-toggle" type="button">
-      <span lang="en" aria-label="Türkçe'ye geç">TR</span><span lang="tr" aria-label="Switch to English">EN</span>
-    </button>
+    <div class="toggles">
+      <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme"><i class="ph ph-circle-half"></i></button>
+      <button class="lang" id="lang-toggle" type="button">
+        <span lang="en" aria-label="Türkçe'ye geç">TR</span><span lang="tr" aria-label="Switch to English">EN</span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -174,8 +182,8 @@
           <span lang="tr">İşletmelerin üzerinde döndüğü yazılımları geliştiriyorum.</span>
         </h1>
         <p class="sub reveal" style="--i:2">
-          <span lang="en">7+ years of turning complex business problems into products that just keep working. From billing platforms to mobile apps.</span>
-          <span lang="tr">7 yılı aşkın süredir karmaşık iş problemlerini sorunsuz çalışan ürünlere dönüştürüyorum. Faturalama platformlarından mobil uygulamalara.</span>
+          <span lang="en">7+ years building backend systems that carry real money and real traffic: billing, integrations, messaging.</span>
+          <span lang="tr">7 yılı aşkın süredir gerçek parayı ve gerçek trafiği taşıyan backend sistemleri geliştiriyorum: faturalama, entegrasyonlar, mesajlaşma.</span>
         </p>
         <div class="ctas reveal" style="--i:3">
           <a class="btn primary" href="#contact"><i class="ph ph-paper-plane-tilt"></i><span lang="en">Get in touch</span><span lang="tr">İletişime geç</span></a>
@@ -188,14 +196,40 @@
   <div class="stats">
     <div class="wrap">
       <div class="stat reveal"><b>7+</b><span lang="en">years building software</span><span lang="tr">yıllık yazılım deneyimi</span></div>
-      <div class="stat reveal"><b>5+</b><span lang="en">enterprise apps shipped</span><span lang="tr">yayına alınmış kurumsal uygulama</span></div>
-      <div class="stat reveal"><b><span lang="en">98.2%</span><span lang="tr">%98,2</span></b><span lang="en">test pass rate as team lead</span><span lang="tr">takım lideriyken test başarısı</span></div>
+      <div class="stat reveal"><b><span lang="en">6 days → 4 h</span><span lang="tr">6 gün → 4 saat</span></b><span lang="en">invoice run after my rebuild</span><span lang="tr">yeniden yazdığım fatura üretimi</span></div>
     </div>
   </div>
 
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="h2 reveal"><span lang="en">Where I have made a difference.</span><span lang="tr">Fark yarattığım yerler.</span></h2>
+      <div class="job reveal">
+        <span class="yr"><span lang="en">2024 - now</span><span lang="tr">2024 - bugün</span></span>
+        <div><h3>Software Developer</h3><span class="co">Millenicom</span></div>
+        <p><span lang="en">I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</span><span lang="tr">Bir telekom faturalama platformunda fatura modülünden sorumluyum. Yeniden yazdığım süreç fatura üretimini 6 günden 4 saate indirdi.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2021 - 2024</span>
+        <div><h3>Full Stack Developer</h3><span class="co">Xinerji Software</span></div>
+        <p><span lang="en">Built the first mobile product line for some of Turkey's largest logistics companies.</span><span lang="tr">Türkiye'nin en büyük lojistik firmaları için ilk mobil ürün ailesini geliştirdim.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2020 - 2021</span>
+        <div><h3><span lang="en">Test Automation Team Lead</span><span lang="tr">Test Otomasyon Takım Lideri</span></h3><span class="co">Ronwell Digital</span></div>
+        <p><span lang="en">Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</span><span lang="tr">İki ayda takım liderliğine yükseldim. Günlük otomatik testleri sıfırdan %98,2 başarıya taşıdım.</span></p>
+      </div>
+      <div class="job reveal">
+        <span class="yr">2019 - 2020</span>
+        <div><h3>Full Stack Developer</h3><span class="co">Etom Cloud</span></div>
+        <p><span lang="en">Built CRM and hiring products at an early-stage startup.</span><span lang="tr">Erken aşama bir girişimde CRM ve işe alım ürünleri geliştirdim.</span></p>
+      </div>
+      <p class="edu reveal"><span lang="en">B.S. Computer Engineering, Trakya University</span><span lang="tr">Bilgisayar Mühendisliği, Trakya Üniversitesi</span></p>
+    </div>
+  </section>
+
   <section id="work">
     <div class="wrap">
-      <h2 class="h2 reveal"><span lang="en">Products I designed and built myself.</span><span lang="tr">Baştan sona kendim tasarlayıp geliştirdiğim ürünler.</span></h2>
+      <h2 class="h2 reveal"><span lang="en">Personal projects, designed and built end to end.</span><span lang="tr">Baştan sona kendim geliştirdiğim kişisel projeler.</span></h2>
       <div class="bento">
         <article class="tile kamci reveal">
           <img class="logo" src="assets/kamci.png" alt="Kamci" width="64" height="64">
@@ -282,33 +316,6 @@
     </div>
   </section>
 
-  <section id="experience">
-    <div class="wrap">
-      <h2 class="h2 reveal"><span lang="en">Where I have made a difference.</span><span lang="tr">Fark yarattığım yerler.</span></h2>
-      <div class="job reveal">
-        <span class="yr"><span lang="en">2024 - now</span><span lang="tr">2024 - bugün</span></span>
-        <div><h3>Software Developer</h3><span class="co">Millenicom</span></div>
-        <p><span lang="en">I own invoicing on a telecom billing platform. My rebuild cut the full invoice run from 6 days to 4 hours.</span><span lang="tr">Bir telekom faturalama platformunda fatura modülünden sorumluyum. Yeniden yazdığım süreç fatura üretimini 6 günden 4 saate indirdi.</span></p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2021 - 2024</span>
-        <div><h3>Full Stack Developer</h3><span class="co">Xinerji Software</span></div>
-        <p><span lang="en">Built the first mobile product line for some of Turkey's largest logistics companies.</span><span lang="tr">Türkiye'nin en büyük lojistik firmaları için ilk mobil ürün ailesini geliştirdim.</span></p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2020 - 2021</span>
-        <div><h3><span lang="en">Test Automation Team Lead</span><span lang="tr">Test Otomasyon Takım Lideri</span></h3><span class="co">Ronwell Digital</span></div>
-        <p><span lang="en">Promoted to lead in two months. Took daily automated testing from zero to a 98.2% pass rate.</span><span lang="tr">İki ayda takım liderliğine yükseldim. Günlük otomatik testleri sıfırdan %98,2 başarıya taşıdım.</span></p>
-      </div>
-      <div class="job reveal">
-        <span class="yr">2019 - 2020</span>
-        <div><h3>Full Stack Developer</h3><span class="co">Etom Cloud</span></div>
-        <p><span lang="en">Built CRM and hiring products at an early-stage startup.</span><span lang="tr">Erken aşama bir girişimde CRM ve işe alım ürünleri geliştirdim.</span></p>
-      </div>
-      <p class="edu reveal"><span lang="en">B.S. Computer Engineering, Trakya University</span><span lang="tr">Bilgisayar Mühendisliği, Trakya Üniversitesi</span></p>
-    </div>
-  </section>
-
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="panel reveal">
@@ -332,6 +339,13 @@
     document.documentElement.dataset.lang = lang;
     document.documentElement.lang = lang;
     try { localStorage.setItem('lang', lang); } catch (e) {}
+  });
+
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
   });
 
   var io = 'IntersectionObserver' in window && new IntersectionObserver(function (entries) {
